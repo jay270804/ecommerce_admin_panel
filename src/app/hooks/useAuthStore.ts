@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 interface User {
   id: string;
@@ -17,24 +18,26 @@ interface AuthState {
 
 export type { AuthState };
 
-export const useAuthStore = create<AuthState>((set) => ({
-  accessToken: null,
-  refreshToken: null,
-  user: null,
-  setAuth: ({ accessToken, refreshToken, user }) => {
-    set({ accessToken, refreshToken, user });
-    if (typeof window !== "undefined") {
-      localStorage.setItem("accessToken", accessToken);
-      localStorage.setItem("refreshToken", refreshToken);
-      localStorage.setItem("user", JSON.stringify(user));
+export const useAuthStore = create<AuthState>()(
+  persist(
+    (set) => ({
+      accessToken: null,
+      refreshToken: null,
+      user: null,
+      setAuth: ({ accessToken, refreshToken, user }) => {
+        set({ accessToken, refreshToken, user });
+      },
+      clearAuth: () => {
+        set({ accessToken: null, refreshToken: null, user: null });
+      },
+    }),
+    {
+      name: "auth-storage", // name of item in storage
+      partialize: (state) => ({
+        accessToken: state.accessToken,
+        refreshToken: state.refreshToken,
+        user: state.user,
+      }),
     }
-  },
-  clearAuth: () => {
-    set({ accessToken: null, refreshToken: null, user: null });
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      localStorage.removeItem("user");
-    }
-  },
-}));
+  )
+);
