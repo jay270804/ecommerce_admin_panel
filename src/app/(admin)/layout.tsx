@@ -7,12 +7,12 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 
 const navLinks = [
-  { href: "/(admin)/dashboard", label: "Dashboard" },
-  { href: "/(admin)/users", label: "Users" },
-  { href: "/(admin)/products", label: "Products" },
-  { href: "/(admin)/orders", label: "Orders" },
-  { href: "/(admin)/categories", label: "Categories" },
-  { href: "/(admin)/brands", label: "Brands" },
+  { href: "/dashboard", label: "Dashboard" },
+  { href: "/users", label: "Users" },
+  { href: "/products", label: "Products" },
+  { href: "/orders", label: "Orders" },
+  { href: "/categories", label: "Categories" },
+  { href: "/brands", label: "Brands" },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
