@@ -1,0 +1,2623 @@
+{
+	"info": {
+		"_postman_id": "918b893b-9624-4669-acd4-c21bb4261193",
+		"name": "Ecommerce Backend - Auth APIs",
+		"description": "Complete authentication and user management API collection for Ecommerce Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40605889"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"password123\",\n  \"phoneNumber\": 1234567890,\n  \"DOB\": \"1990-01-01\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"firstName\":\"Subject\", \n     \"lastName\":\"1\", \n     \"email\":\"subject1@example.com\", \n     \"password\":\"Qwertyj@y2708\", \n     \"phoneNumber\":\"9979867232\", \n     \"DOB\":\"2004-07-21\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"success\": true,\r\n    \"message\": \"User registered successfully. Please check your email for verification.\",\r\n    \"data\": {\r\n        \"user\": {\r\n            \"id\": \"68516d3ea525884d68d4492b\",\r\n            \"firstName\": \"Subject\",\r\n            \"lastName\": \"1\",\r\n            \"email\": \"subject1@example.com\",\r\n            \"role\": \"user\",\r\n            \"emailVerified\": false\r\n        },\r\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODUxNmQzZWE1MjU4ODRkNjhkNDQ5MmIiLCJyb2xlIjoidXNlciIsImlhdCI6MTc1MDE2Njg0NiwiZXhwIjoxNzUwMjUzMjQ2fQ.lBzh56ryeunloqNcaI2e-HIcS2gEhAHZbTgTo5oVDUE\",\r\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODUxNmQzZWE1MjU4ODRkNjhkNDQ5MmIiLCJpYXQiOjE3NTAxNjY4NDYsImV4cCI6MTc1MDc3MTY0Nn0.pt0cGbp6_Vow2RjUks2gzqKuEV3mKVbe3HvEvG6UpvI\"\r\n    }\r\n}"
+						},
+						{
+							"name": "No token 201 created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Sample\",\n  \"lastName\": \"11\",\n  \"email\": \"john@example.com\",\n  \"password\": \"Qwertyj@y2708\",\n  \"phoneNumber\": 9979876242\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "251"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fb-T9FxWnKC130DS432FyqIIQl6h0U\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 14:04:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User registered successfully. Please check your email for verification and then login.\",\n    \"data\": {\n        \"user\": {\n            \"id\": \"685175d7a8f3826aeaae47a6\",\n            \"firstName\": \"Sample\",\n            \"lastName\": \"11\",\n            \"email\": \"john@example.com\",\n            \"emailVerified\": false\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"subject1@example.com\",\r\n    \"password\":\"Qwertyj@y2708\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "605"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25d-NrEpz9m9ogH09UbGJj1bbyfw0qU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 13:30:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"user\": {\n            \"id\": \"68516d3ea525884d68d4492b\",\n            \"firstName\": \"Subject\",\n            \"lastName\": \"1\",\n            \"email\": \"subject1@example.com\",\n            \"role\": \"user\",\n            \"emailVerified\": false\n        },\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODUxNmQzZWE1MjU4ODRkNjhkNDQ5MmIiLCJyb2xlIjoidXNlciIsImlhdCI6MTc1MDE2NzAwMywiZXhwIjoxNzUwMjUzNDAzfQ.udT39WW-Fn4foT3g6DviF3m44kwMfscblgUSuyD4KWc\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODUxNmQzZWE1MjU4ODRkNjhkNDQ5MmIiLCJpYXQiOjE3NTAxNjcwMDMsImV4cCI6MTc1MDc3MTgwM30.9Lp9HCFxcmo2boZ1JJwQJJr3mc-jyFPt8Kczre1nfZA\"\n    }\n}"
+						},
+						{
+							"name": "1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"Qwertyj@y2708\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "601"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"259-tEeRyKqhFNJg5OJPl001nDAYnlI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 14:05:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"user\": {\n            \"id\": \"685175d7a8f3826aeaae47a6\",\n            \"firstName\": \"Sample\",\n            \"lastName\": \"11\",\n            \"email\": \"john@example.com\",\n            \"role\": \"user\",\n            \"emailVerified\": false\n        },\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODUxNzVkN2E4ZjM4MjZhZWFhZTQ3YTYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc1MDE2OTExNiwiZXhwIjoxNzUwMjU1NTE2fQ.PkPx11DfKMgcEsYyMCS0-w8Mxze0Vi9hZns2AWdExTs\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODUxNzVkN2E4ZjM4MjZhZWFhZTQ3YTYiLCJpYXQiOjE3NTAxNjkxMTYsImV4cCI6MTc1MDc3MzkxNn0.FdaVvPfCcNY0ZWQJZEwDnl7Wm59MGyFZ1NWT2DYJP7s\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/refresh-token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request Password Reset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john.doe@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/request-password-reset",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"request-password-reset"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"subject1@example.com\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/request-password-reset",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"request-password-reset"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-oEpRwl67hrRBd9toEZbFCU1Fl9o\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 13:42:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Password reset email sent successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"token\": \"reset_token_here\",\n  \"newPassword\": \"newpassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/reset-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"subject1@example.com\",\n  \"token\": \"reset_token_here\",\n  \"newPassword\": \"Qwertyj@y\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/reset-password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"reset-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-2Gib5CWmd6iCx7e709n4PLv/myk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 13:42:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Password reset successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/verify-email/USER_ID_HERE/TOKEN_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"verify-email",
+								"USER_ID_HERE",
+								"TOKEN_HERE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "331"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14b-EYUPQ7V9sZsS4/2k894VWo/ep/A\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 13:46:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"user\": {\n            \"_id\": \"68516d3ea525884d68d4492b\",\n            \"firstName\": \"Subject\",\n            \"lastName\": \"1\",\n            \"email\": \"subject1@example.com\",\n            \"phoneNumber\": 9979867232,\n            \"DOB\": \"2004-07-21T00:00:00.000Z\",\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T13:27:26.895Z\",\n            \"updatedAt\": \"2025-06-17T13:42:56.108Z\",\n            \"__v\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John Updated\",\n  \"lastName\": \"Doe Updated\",\n  \"phoneNumber\": 9876543210,\n  \"DOB\": \"1990-01-01\",\n  \"profileImage\": \"https://example.com/profile.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 ok (lastname)",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"lastName\": \"2\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "372"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"174-7Y1yeRN3kRB0bxHJGU66NSvviSc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 13:48:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Profile updated successfully\",\n    \"data\": {\n        \"user\": {\n            \"_id\": \"68516d3ea525884d68d4492b\",\n            \"firstName\": \"Subject\",\n            \"lastName\": \"2\",\n            \"email\": \"subject1@example.com\",\n            \"phoneNumber\": 9979867232,\n            \"DOB\": \"2004-07-21T00:00:00.000Z\",\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T13:27:26.895Z\",\n            \"updatedAt\": \"2025-06-17T13:48:32.833Z\",\n            \"__v\": 0\n        }\n    }\n}"
+						},
+						{
+							"name": "body reference",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"John Updated\",\n  \"lastName\": \"Doe Updated\",\n  \"phoneNumber\": 9876543210,\n  \"DOB\": \"1990-01-01\",\n  \"profileImage\": \"https://example.com/profile.jpg\"\n}\n// Add required updation fields\n"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "372"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"174-7Y1yeRN3kRB0bxHJGU66NSvviSc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 13:48:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Profile updated successfully\",\n    \"data\": {\n        \"user\": {\n            \"_id\": \"68516d3ea525884d68d4492b\",\n            \"firstName\": \"Subject\",\n            \"lastName\": \"2\",\n            \"email\": \"subject1@example.com\",\n            \"phoneNumber\": 9979867232,\n            \"DOB\": \"2004-07-21T00:00:00.000Z\",\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T13:27:26.895Z\",\n            \"updatedAt\": \"2025-06-17T13:48:32.833Z\",\n            \"__v\": 0\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User Management (Admin Only)",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminAuthToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users?page=1&limit=10&role=user&isActive=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "user",
+									"description": "user | admin"
+								},
+								{
+									"key": "isActive",
+									"value": "true",
+									"description": "true | false"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401 not admin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/users?page=1&limit=10&search=&role=&isActive=",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": ""
+										},
+										{
+											"key": "role",
+											"value": ""
+										},
+										{
+											"key": "isActive",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-q4hj36QBf0SIfOJcFu1yYyZ0m2o\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 13:50:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Access token required\"\n}"
+						},
+						{
+							"name": "params reference",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/users?page=1&limit=10&search=&role=&isActive=",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": ""
+										},
+										{
+											"key": "role",
+											"value": ""
+										},
+										{
+											"key": "isActive",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-q4hj36QBf0SIfOJcFu1yYyZ0m2o\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 13:50:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "no filters",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "10",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "role",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "isActive",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1257"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e9-DJqyLj9kr//Ek79eHCA4GzRTHoc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 14:12:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"68517694a8f3826aeaae47aa\",\n            \"firstName\": \"Jay\",\n            \"lastName\": \"Patel\",\n            \"email\": \"jaypatel270804@gmail.com\",\n            \"phoneNumber\": 8469939018,\n            \"DOB\": null,\n            \"role\": \"admin\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T14:07:16.547Z\",\n            \"updatedAt\": \"2025-06-17T14:07:16.547Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"685175d7a8f3826aeaae47a6\",\n            \"firstName\": \"Sample\",\n            \"lastName\": \"11\",\n            \"email\": \"john@example.com\",\n            \"phoneNumber\": 9979876242,\n            \"DOB\": null,\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T14:04:07.019Z\",\n            \"updatedAt\": \"2025-06-17T14:04:07.019Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6851759aa525884d68d4493c\",\n            \"firstName\": \"Sample\",\n            \"lastName\": \"10\",\n            \"email\": \"john.doe@example.com\",\n            \"phoneNumber\": 1234567890,\n            \"DOB\": null,\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T14:03:06.852Z\",\n            \"updatedAt\": \"2025-06-17T14:03:06.852Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68516d3ea525884d68d4492b\",\n            \"firstName\": \"Subject\",\n            \"lastName\": \"2\",\n            \"email\": \"subject1@example.com\",\n            \"phoneNumber\": 9979867232,\n            \"DOB\": \"2004-07-21T00:00:00.000Z\",\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T13:27:26.895Z\",\n            \"updatedAt\": \"2025-06-17T13:48:32.833Z\",\n            \"__v\": 0\n        }\n    ],\n    \"pagination\": {\n        \"currentPage\": 1,\n        \"totalPages\": 1,\n        \"totalUsers\": 4,\n        \"hasNextPage\": false,\n        \"hasPrevPage\": false\n    }\n}"
+						},
+						{
+							"name": "filter Role",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/users?page=1&limit=10&role=user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "role",
+											"value": "user",
+											"description": "\"user\" | \"admin\""
+										},
+										{
+											"key": "isActive",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "975"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3cf-7EsRxeRdp+EXT43LDMo7oiVOqLQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 14:13:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"685175d7a8f3826aeaae47a6\",\n            \"firstName\": \"Sample\",\n            \"lastName\": \"11\",\n            \"email\": \"john@example.com\",\n            \"phoneNumber\": 9979876242,\n            \"DOB\": null,\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T14:04:07.019Z\",\n            \"updatedAt\": \"2025-06-17T14:04:07.019Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6851759aa525884d68d4493c\",\n            \"firstName\": \"Sample\",\n            \"lastName\": \"10\",\n            \"email\": \"john.doe@example.com\",\n            \"phoneNumber\": 1234567890,\n            \"DOB\": null,\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T14:03:06.852Z\",\n            \"updatedAt\": \"2025-06-17T14:03:06.852Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68516d3ea525884d68d4492b\",\n            \"firstName\": \"Subject\",\n            \"lastName\": \"2\",\n            \"email\": \"subject1@example.com\",\n            \"phoneNumber\": 9979867232,\n            \"DOB\": \"2004-07-21T00:00:00.000Z\",\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T13:27:26.895Z\",\n            \"updatedAt\": \"2025-06-17T13:48:32.833Z\",\n            \"__v\": 0\n        }\n    ],\n    \"pagination\": {\n        \"currentPage\": 1,\n        \"totalPages\": 1,\n        \"totalUsers\": 3,\n        \"hasNextPage\": false,\n        \"hasPrevPage\": false\n    }\n}"
+						},
+						{
+							"name": "filter isActive",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/users?page=1&limit=10&isActive=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "role",
+											"value": "user",
+											"description": "user | admin",
+											"disabled": true
+										},
+										{
+											"key": "isActive",
+											"value": "true",
+											"description": "true | false"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1257"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e9-DJqyLj9kr//Ek79eHCA4GzRTHoc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 14:14:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"68517694a8f3826aeaae47aa\",\n            \"firstName\": \"Jay\",\n            \"lastName\": \"Patel\",\n            \"email\": \"jaypatel270804@gmail.com\",\n            \"phoneNumber\": 8469939018,\n            \"DOB\": null,\n            \"role\": \"admin\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T14:07:16.547Z\",\n            \"updatedAt\": \"2025-06-17T14:07:16.547Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"685175d7a8f3826aeaae47a6\",\n            \"firstName\": \"Sample\",\n            \"lastName\": \"11\",\n            \"email\": \"john@example.com\",\n            \"phoneNumber\": 9979876242,\n            \"DOB\": null,\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T14:04:07.019Z\",\n            \"updatedAt\": \"2025-06-17T14:04:07.019Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6851759aa525884d68d4493c\",\n            \"firstName\": \"Sample\",\n            \"lastName\": \"10\",\n            \"email\": \"john.doe@example.com\",\n            \"phoneNumber\": 1234567890,\n            \"DOB\": null,\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T14:03:06.852Z\",\n            \"updatedAt\": \"2025-06-17T14:03:06.852Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68516d3ea525884d68d4492b\",\n            \"firstName\": \"Subject\",\n            \"lastName\": \"2\",\n            \"email\": \"subject1@example.com\",\n            \"phoneNumber\": 9979867232,\n            \"DOB\": \"2004-07-21T00:00:00.000Z\",\n            \"role\": \"user\",\n            \"isActive\": true,\n            \"emailVerified\": false,\n            \"createdAt\": \"2025-06-17T13:27:26.895Z\",\n            \"updatedAt\": \"2025-06-17T13:48:32.833Z\",\n            \"__v\": 0\n        }\n    ],\n    \"pagination\": {\n        \"currentPage\": 1,\n        \"totalPages\": 1,\n        \"totalUsers\": 4,\n        \"hasNextPage\": false,\n        \"hasPrevPage\": false\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/stats",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"stats"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/users/stats",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"stats"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "228"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e4-Mhaen+7G27H6CVQH+wUcbE19XxA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 14:15:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"totalUsers\": 4,\n        \"activeUsers\": 4,\n        \"verifiedUsers\": 0,\n        \"adminUsers\": 1,\n        \"usersByRole\": [\n            {\n                \"_id\": \"user\",\n                \"count\": 3\n            },\n            {\n                \"_id\": \"admin\",\n                \"count\": 1\n            }\n        ],\n        \"usersByVerification\": [\n            {\n                \"_id\": false,\n                \"count\": 4\n            }\n        ],\n        \"recentRegistrations\": 4\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/USER_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"USER_ID_HERE"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "68516d3ea525884d68d4492b"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "322"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"142-gq/w2AF5OaTTcB8s1QdiriKELKM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 14:11:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"68516d3ea525884d68d4492b\",\n        \"firstName\": \"Subject\",\n        \"lastName\": \"2\",\n        \"email\": \"subject1@example.com\",\n        \"phoneNumber\": 9979867232,\n        \"DOB\": \"2004-07-21T00:00:00.000Z\",\n        \"role\": \"user\",\n        \"isActive\": true,\n        \"emailVerified\": false,\n        \"createdAt\": \"2025-06-17T13:27:26.895Z\",\n        \"updatedAt\": \"2025-06-17T13:48:32.833Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John Admin\",\n  \"lastName\": \"Doe Admin\",\n  \"email\": \"john.admin@example.com\",\n  \"phoneNumber\": 1234567890,\n  \"role\": \"user\",\n  \"isActive\": true,\n  \"emailVerified\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/USER_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"USER_ID_HERE"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "made user->admin",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"role\": \"admin\",\n  \"emailVerified\": true\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "68516d3ea525884d68d4492b"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "360"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"168-fzBUARYlkh3cNAKor+5GRYT4G90\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 14:16:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User updated successfully\",\n    \"data\": {\n        \"_id\": \"68516d3ea525884d68d4492b\",\n        \"firstName\": \"Subject\",\n        \"lastName\": \"2\",\n        \"email\": \"subject1@example.com\",\n        \"phoneNumber\": 9979867232,\n        \"DOB\": \"2004-07-21T00:00:00.000Z\",\n        \"role\": \"admin\",\n        \"isActive\": true,\n        \"emailVerified\": true,\n        \"createdAt\": \"2025-06-17T13:27:26.895Z\",\n        \"updatedAt\": \"2025-06-17T14:16:56.287Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User (Soft Delete)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/USER_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"USER_ID_HERE"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 ok",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "6851759aa525884d68d4493c"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "339"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"153-t2zVewgAjXLpHNpCNnJ+5tvFJQA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jun 2025 14:19:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User deleted successfully\",\n    \"data\": {\n        \"_id\": \"6851759aa525884d68d4493c\",\n        \"firstName\": \"Sample\",\n        \"lastName\": \"10\",\n        \"email\": \"john.doe@example.com\",\n        \"phoneNumber\": 1234567890,\n        \"DOB\": null,\n        \"role\": \"user\",\n        \"isActive\": false,\n        \"emailVerified\": false,\n        \"createdAt\": \"2025-06-17T14:03:06.852Z\",\n        \"updatedAt\": \"2025-06-17T14:19:34.409Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product Management (Admin Only)",
+			"item": [
+				{
+					"name": "Upload Product Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/products/upload-image",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"upload-image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Sample Product",
+									"type": "text"
+								},
+								{
+									"key": "summary",
+									"value": "Product summary",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Detailed product description",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "99.99",
+									"type": "text"
+								},
+								{
+									"key": "stockUnit",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "discountPercentage",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "CATEGORY_ID_HERE",
+									"type": "text"
+								},
+								{
+									"key": "brandId",
+									"value": "BRAND_ID_HERE",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"value": "[\"image1.jpg\", \"image2.jpg\"]",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "[\"tag1\", \"tag2\"]",
+									"type": "text"
+								},
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "IHeadphone",
+											"type": "text"
+										},
+										{
+											"key": "summary",
+											"value": "This are headphones, curated by apple inc with handcrafted leather paddings.",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "This are headphones, curated by apple inc with handcrafted leather paddings. MOreover, it has active noise cancellation feature with sleek and modern design.",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "1999",
+											"type": "text"
+										},
+										{
+											"key": "stockUnit",
+											"value": "9",
+											"type": "text"
+										},
+										{
+											"key": "discountPercentage",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "6852cb378b594ad7310b60e3",
+											"description": "CATEGORY_ID_HERE",
+											"type": "text"
+										},
+										{
+											"key": "brandId",
+											"value": "6852b9063986a5839977858e",
+											"description": "BRAND_ID_HERE",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "tags",
+											"value": "[\"audio\",\"headphone\",\"hands-free\",\"bluetooth\",\"TWS\"]",
+											"description": "[\"tag1\", \"tag2\"]",
+											"type": "text"
+										},
+										{
+											"key": "coverImage",
+											"type": "file",
+											"src": "/C:/Users/Admin/Downloads/headphones-min.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1560"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"618-RoY1HZO+5vGW1fXsbfQIvKQYH18\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jun 2025 14:25:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Product created successfully\",\n    \"data\": {\n        \"name\": \"IHeadphone\",\n        \"summary\": \"This are headphones, curated by apple inc with handcrafted leather paddings.\",\n        \"description\": \"This are headphones, curated by apple inc with handcrafted leather paddings. MOreover, it has active noise cancellation feature with sleek and modern design.\",\n        \"coverImage\": \"20031608-db7b-49cd-bd01-eb3823979f29_original.jpg\",\n        \"images\": [],\n        \"stockUnit\": 9,\n        \"price\": 1999,\n        \"discountPercentage\": 10,\n        \"categoryId\": \"6852cb378b594ad7310b60e3\",\n        \"brandId\": \"6852b9063986a5839977858e\",\n        \"isActive\": true,\n        \"tags\": [\n            \"audio\",\n            \"headphone\",\n            \"hands-free\",\n            \"bluetooth\",\n            \"TWS\"\n        ],\n        \"_id\": \"6852cc408b594ad7310b60ec\",\n        \"createdAt\": \"2025-06-18T14:25:04.170Z\",\n        \"updatedAt\": \"2025-06-18T14:25:04.170Z\",\n        \"discountedPrice\": 1799.1,\n        \"__v\": 0,\n        \"coverImageSizes\": {\n            \"thumbnail\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_thumbnail.jpg\",\n            \"small\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_small.jpg\",\n            \"medium\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_medium.jpg\",\n            \"large\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_large.jpg\",\n            \"original\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_original.jpg\",\n            \"srcset\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_thumbnail.jpg 150w, /uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_small.jpg 300w, /uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_medium.jpg 600w, /uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_large.jpg 1200w, /uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_original.jpg 2000w\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Updated Product Name",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "149.99",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Updated description",
+									"type": "text"
+								},
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/products/PRODUCT_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"PRODUCT_ID_HERE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products/PRODUCT_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"PRODUCT_ID_HERE"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product Browsing (Public)",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products?page=1&limit=10&categoryId=&brandId=&minPrice=&maxPrice=&sortBy=createdAt&sortOrder=desc&search=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "categoryId",
+									"value": ""
+								},
+								{
+									"key": "brandId",
+									"value": ""
+								},
+								{
+									"key": "minPrice",
+									"value": ""
+								},
+								{
+									"key": "maxPrice",
+									"value": ""
+								},
+								{
+									"key": "sortBy",
+									"value": "createdAt"
+								},
+								{
+									"key": "sortOrder",
+									"value": "desc"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/products?page=1&limit=10&categoryId=&brandId=&minPrice=&maxPrice=&sortBy=createdAt&sortOrder=desc&search=",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "categoryId",
+											"value": ""
+										},
+										{
+											"key": "brandId",
+											"value": ""
+										},
+										{
+											"key": "minPrice",
+											"value": ""
+										},
+										{
+											"key": "maxPrice",
+											"value": ""
+										},
+										{
+											"key": "sortBy",
+											"value": "createdAt"
+										},
+										{
+											"key": "sortOrder",
+											"value": "desc"
+										},
+										{
+											"key": "search",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1734"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c6-vDx2zZDQA1PWJmAM0xdAoClbZVw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jun 2025 14:26:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Products fetched successfully\",\n    \"data\": {\n        \"products\": [\n            {\n                \"_id\": \"6852cc408b594ad7310b60ec\",\n                \"name\": \"IHeadphone\",\n                \"summary\": \"This are headphones, curated by apple inc with handcrafted leather paddings.\",\n                \"description\": \"This are headphones, curated by apple inc with handcrafted leather paddings. MOreover, it has active noise cancellation feature with sleek and modern design.\",\n                \"coverImage\": \"20031608-db7b-49cd-bd01-eb3823979f29_original.jpg\",\n                \"images\": [],\n                \"stockUnit\": 9,\n                \"price\": 1999,\n                \"discountPercentage\": 10,\n                \"categoryId\": {\n                    \"_id\": \"6852cb378b594ad7310b60e3\",\n                    \"name\": \"Audio devices\"\n                },\n                \"brandId\": {\n                    \"_id\": \"6852b9063986a5839977858e\",\n                    \"name\": \"Apple\"\n                },\n                \"isActive\": true,\n                \"tags\": [\n                    \"audio\",\n                    \"headphone\",\n                    \"hands-free\",\n                    \"bluetooth\",\n                    \"TWS\"\n                ],\n                \"createdAt\": \"2025-06-18T14:25:04.170Z\",\n                \"updatedAt\": \"2025-06-18T14:25:04.170Z\",\n                \"discountedPrice\": 1799.1,\n                \"__v\": 0,\n                \"coverImageSizes\": {\n                    \"thumbnail\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_thumbnail.jpg\",\n                    \"small\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_small.jpg\",\n                    \"medium\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_medium.jpg\",\n                    \"large\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_large.jpg\",\n                    \"original\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_original.jpg\",\n                    \"srcset\": \"/uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_thumbnail.jpg 150w, /uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_small.jpg 300w, /uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_medium.jpg 600w, /uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_large.jpg 1200w, /uploads/products/20031608-db7b-49cd-bd01-eb3823979f29_original.jpg 2000w\"\n                }\n            }\n        ],\n        \"pagination\": {\n            \"currentPage\": 1,\n            \"totalPages\": 1,\n            \"totalProducts\": 1,\n            \"hasNextPage\": false,\n            \"hasPrevPage\": false\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products/PRODUCT_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"PRODUCT_ID_HERE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Filter Metadata",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products/filters/metadata",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"filters",
+								"metadata"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category Management",
+			"item": [
+				{
+					"name": "Get All Categories (Public)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories?page=1&limit=10&search=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category by ID (Public)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/CATEGORY_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"CATEGORY_ID_HERE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Electronics\",\n  \"description\": \"Electronic devices and gadgets\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Audio devices\",\n  \"description\": \"Audio TWS, Headphones and many more.\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"categories"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "262"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"106-pyGyu2oGD7mH+Aq/jo9TAyGWC+c\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jun 2025 14:20:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Category created successfully\",\n    \"data\": {\n        \"name\": \"Audio devices\",\n        \"description\": \"Audio TWS, Headphones and many more.\",\n        \"_id\": \"6852cb378b594ad7310b60e3\",\n        \"createdAt\": \"2025-06-18T14:20:39.417Z\",\n        \"updatedAt\": \"2025-06-18T14:20:39.417Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Category (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Electronics\",\n  \"description\": \"Updated description for electronics\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/CATEGORY_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"CATEGORY_ID_HERE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/CATEGORY_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"CATEGORY_ID_HERE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category Statistics (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/stats",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Brand Management",
+			"item": [
+				{
+					"name": "Get All Brands (Public)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/brands?page=1&limit=10&search=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"brands"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/brands?page=1&limit=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"brands"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "299"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12b-GRDZ4M7A8Cii/mcPkBnSTvtiIJ8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jun 2025 13:18:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"6852b9063986a5839977858e\",\n            \"name\": \"Apple\",\n            \"description\": \"Apple Inc. products\",\n            \"createdAt\": \"2025-06-18T13:03:02.247Z\",\n            \"updatedAt\": \"2025-06-18T13:03:02.247Z\",\n            \"__v\": 0\n        }\n    ],\n    \"pagination\": {\n        \"currentPage\": 1,\n        \"totalPages\": 1,\n        \"totalBrands\": 1,\n        \"hasNextPage\": false,\n        \"hasPrevPage\": false\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Brand by ID (Public)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/brands/BRAND_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"brands",
+								"BRAND_ID_HERE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Brand (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Apple\",\n  \"description\": \"Apple Inc. products\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/brands",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"brands"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Apple\",\n  \"description\": \"Apple Inc. products\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/brands",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"brands"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "234"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ea-a/644Lim5d2x+2Xpc+VdE8ovdsg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jun 2025 13:03:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Brand created successfully\",\n    \"data\": {\n        \"name\": \"Apple\",\n        \"description\": \"Apple Inc. products\",\n        \"_id\": \"6852b9063986a5839977858e\",\n        \"createdAt\": \"2025-06-18T13:03:02.247Z\",\n        \"updatedAt\": \"2025-06-18T13:03:02.247Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Brand (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Apple Inc.\",\n  \"description\": \"Updated description for Apple Inc.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/brands/BRAND_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"brands",
+								"BRAND_ID_HERE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Brand (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/brands/BRAND_ID_HERE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"brands",
+								"BRAND_ID_HERE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Brand Statistics (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/brands/stats",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"brands",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refreshToken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

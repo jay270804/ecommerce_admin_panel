@@ -1,0 +1,540 @@
+{
+	"info": {
+		"_postman_id": "0c759b77-0f80-4c66-ad6c-7e6dcbce501b",
+		"name": "Ecommerce Address & Order APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40605889"
+	},
+	"item": [
+		{
+			"name": "Address APIs",
+			"item": [
+				{
+					"name": "Create Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\":\"Home\",\n  \"AddrLine1\": \"A/303, Sunandan Society\",\n  \"AddrLine2\": \"Apt 4B\",\n  \"city\": \"Ahmedabad\",\n  \"state\": \"Gujarat\",\n  \"PIN\": \"382421\",\n  \"landmark\":\"Damru Circle\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/addresses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"addresses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Address",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\":\"Home\",\n  \"AddrLine1\": \"A/303, Sunandan Society\",\n  \"AddrLine2\": \"Apt 4B\",\n  \"city\": \"Ahmedabad\",\n  \"state\": \"Gujarat\",\n  \"PIN\": \"382421\",\n  \"landmark\":\"Damru Circle\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/addresses",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"addresses"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "308"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"134-o9aKhct1F2SQAZeFHkdt7YQb80g\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Jul 2025 06:40:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": \"685ff5960f14616b5340d65b\",\n    \"title\": \"Home\",\n    \"AddrLine1\": \"A/303, Sunandan Society\",\n    \"AddrLine2\": \"Apt 4B\",\n    \"landmark\": \"Damru Circle\",\n    \"city\": \"Ahmedabad\",\n    \"state\": \"Gujarat\",\n    \"PIN\": \"382421\",\n    \"_id\": \"686b6bf26b23aa6de709a931\",\n    \"createdAt\": \"2025-07-07T06:40:50.175Z\",\n    \"updatedAt\": \"2025-07-07T06:40:50.175Z\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Get My Addresses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/addresses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"addresses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get My Addresses",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/addresses",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"addresses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "310"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"136-XuTtwVtSjvbT0qnPjGk9jLE5qA0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Jul 2025 06:40:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"686b6bf26b23aa6de709a931\",\n        \"userId\": \"685ff5960f14616b5340d65b\",\n        \"title\": \"Home\",\n        \"AddrLine1\": \"A/303, Sunandan Society\",\n        \"AddrLine2\": \"Apt 4B\",\n        \"landmark\": \"Damru Circle\",\n        \"city\": \"Ahmedabad\",\n        \"state\": \"Gujarat\",\n        \"PIN\": \"382421\",\n        \"createdAt\": \"2025-07-07T06:40:50.175Z\",\n        \"updatedAt\": \"2025-07-07T06:40:50.175Z\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Address By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/addresses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"addresses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Address",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"city\": \"Updated City\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/addresses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"addresses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Address",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/addresses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"addresses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order APIs",
+			"item": [
+				{
+					"name": "Create Razorpay Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 1000,\n  \"currency\": \"INR\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/payments/create-order",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"payments",
+								"create-order"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Razorpay Order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": 1000,\n  \"currency\": \"INR\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/payments/create-order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"payments",
+										"create-order"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "213"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d5-W/YRYSu7B++PIsPxO4/398BkPFI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Jul 2025 06:42:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"amount\": 100000,\n    \"amount_due\": 100000,\n    \"amount_paid\": 0,\n    \"attempts\": 0,\n    \"created_at\": 1751870544,\n    \"currency\": \"INR\",\n    \"entity\": \"order\",\n    \"id\": \"order_Qq5AaG5e2qn0ua\",\n    \"notes\": [],\n    \"offer_id\": null,\n    \"receipt\": null,\n    \"status\": \"created\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify Payment & Create Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"razorpay_order_id\": \"order_DBJOWzybf0sJbb\",\n  \"razorpay_payment_id\": \"pay_DBJOuTy5v0sJbb\",\n  \"razorpay_signature\": \"generated_signature\",\n  \"orderItems\": [\n    { \"product\": \"PRODUCT_ID\", \"quantity\": 2, \"price\": 500 }\n  ],\n  \"shippingAddress\": \"ADDRESS_ID\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/payments/verify",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"payments",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api"
+		},
+		{
+			"key": "authToken",
+			"value": "<YOUR_JWT_TOKEN>"
+		}
+	]
+}
