@@ -41,7 +41,7 @@ export default function LoginPage() {
       }
       setAuth({ accessToken, refreshToken, user });
       document.cookie = `accessToken=${accessToken}; path=/; max-age=86400;`;
-      window.location.href = "/";
+      window.location.href = "/dashboard";
     } catch (err: any) {
       setError(err.message);
     } finally {
