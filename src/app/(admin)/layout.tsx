@@ -58,6 +58,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </Link>
           ))}
         </nav>
+        {/* User email at the end of sidebar */}
+        <div className="mt-auto pt-8 text-xs text-muted-foreground break-all">
+          {user?.email && <span>{user.email}</span>}
+        </div>
       </aside>
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-h-screen">
