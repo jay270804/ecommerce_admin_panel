@@ -24,3 +24,42 @@ export interface Brand {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  coverImage: string;
+  brand: Brand;
+  category: Category;
+}
+
+export interface OrderItem {
+  product: Product;
+  quantity: number;
+  price: number;
+}
+
+export interface ShippingAddress {
+  _id: string;
+  userId: string;
+  title: string;
+  AddrLine1: string;
+  AddrLine2?: string;
+  landmark?: string;
+  city: string;
+  state: string;
+  PIN: string;
+}
+
+export interface Order {
+  _id: string;
+  user: string;
+  orderItems: OrderItem[];
+  shippingAddress: ShippingAddress | string;
+  orderTotal: number;
+  orderStatus: string;
+  createdAt: string;
+  updatedAt: string;
+}
