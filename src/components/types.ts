@@ -28,13 +28,23 @@ export interface Brand {
 export interface Product {
   _id: string;
   name: string;
+  summary: string;
   description: string;
   price: number;
+  stockUnit: number;
   coverImage: string;
-  brand: Brand;
-  category: Category;
+  images: string[];
+  discountPercentage: number;
+  categoryId: {
+    _id: string;
+    name: string;
+    brand: {
+      _id: string;
+      name: string;
+    };
+  };
+  tags: string[];
 }
-
 export interface OrderItem {
   product: Product;
   quantity: number;
