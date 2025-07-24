@@ -142,6 +142,7 @@ export default function CategoriesPage() {
         <Table>
           <TableHeader>
             <TableRow>
+              <TableHead>Id</TableHead>
               <TableHead>Name</TableHead>
               <TableHead>Description</TableHead>
               <TableHead>Actions</TableHead>
@@ -150,19 +151,20 @@ export default function CategoriesPage() {
           <TableBody>
             {loading ? (
               <TableRow>
-                <TableCell colSpan={3}>Loading...</TableCell>
+                <TableCell colSpan={4}>Loading...</TableCell>
               </TableRow>
             ) : error ? (
               <TableRow>
-                <TableCell colSpan={3} className="text-red-500">{error}</TableCell>
+                <TableCell colSpan={4} className="text-red-500">{error}</TableCell>
               </TableRow>
             ) : categories.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={3}>No categories found.</TableCell>
+                <TableCell colSpan={4}>No categories found.</TableCell>
               </TableRow>
             ) : (
               categories.map((category) => (
                 <TableRow key={category._id}>
+                  <TableCell className="font-mono text-xs select-all">{category._id}</TableCell>
                   <TableCell>{category.name}</TableCell>
                   <TableCell>{category.description}</TableCell>
                   <TableCell>

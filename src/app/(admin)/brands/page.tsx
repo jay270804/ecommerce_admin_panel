@@ -93,6 +93,7 @@ export default function BrandsPage() {
         <Table>
           <TableHeader>
             <TableRow>
+              <TableHead>Id</TableHead>
               <TableHead>Name</TableHead>
               <TableHead>Description</TableHead>
               <TableHead>Actions</TableHead>
@@ -101,19 +102,20 @@ export default function BrandsPage() {
           <TableBody>
             {loading ? (
               <TableRow>
-                <TableCell colSpan={3}>Loading...</TableCell>
+                <TableCell colSpan={4}>Loading...</TableCell>
               </TableRow>
             ) : error ? (
               <TableRow>
-                <TableCell colSpan={3} className="text-red-500">{error}</TableCell>
+                <TableCell colSpan={4} className="text-red-500">{error}</TableCell>
               </TableRow>
             ) : brands.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={3}>No brands found.</TableCell>
+                <TableCell colSpan={4}>No brands found.</TableCell>
               </TableRow>
             ) : (
               brands.map((brand) => (
                 <TableRow key={brand._id}>
+                  <TableCell className="font-mono text-xs select-all">{brand._id}</TableCell>
                   <TableCell>{brand.name}</TableCell>
                   <TableCell>{brand.description}</TableCell>
                   <TableCell>
